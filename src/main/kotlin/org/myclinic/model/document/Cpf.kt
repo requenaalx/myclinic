@@ -1,0 +1,15 @@
+package org.myclinic.model.document
+
+import org.myclinic.model.exception.EmptyArgument
+import org.myclinic.model.exception.PatternMismatch
+
+private const val PATTERN: String = "[0-9]{11}"
+
+data class Cpf(override val number: String) : Document {
+    override val type: DocumentType = DocumentType.CPF
+
+    init {
+        if (number.isEmpty()) throw EmptyArgument(number::class.simpleName!!)
+        if (!number.matches(PATTERN.toRegex())) throw PatternMismatch()
+    }
+}
