@@ -1,10 +1,8 @@
 package org.myclinic.model.patient
 
-import org.myclinic.model.address.Address
-import org.myclinic.model.contact.Email
-import org.myclinic.model.contact.Phone
-import org.myclinic.model.document.Cpf
-import org.myclinic.model.document.Rg
+import org.myclinic.model.Address
+import org.myclinic.model.Email
+import org.myclinic.model.Phone
 import org.myclinic.model.exception.EmptyArgument
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
@@ -21,7 +19,7 @@ class HumanPatient(
     val birthDate: LocalDate,
     phoneNumbers: Set<Phone>,
     medicines: Set<String> = emptySet(),
-    status: Status = PatientStatus.ACTIVE,
+    status: Status = Status.ACTIVE,
     guardians: Set<Guardian> = emptySet(),
     history: Set<Note> = emptySet(),
 ) {
@@ -109,10 +107,10 @@ class HumanPatient(
     }
 
     fun deactivate(reason: String) {
-        status = Abandoned(reason)
+        status = Status.ABANDONED
     }
 
     fun discharge() {
-        status = Discharged()
+        status = Status.DISCHARGED
     }
 }

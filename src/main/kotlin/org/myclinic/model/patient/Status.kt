@@ -1,5 +1,5 @@
 package org.myclinic.model.patient
 
-interface Status {
-    val type: PatientStatus
+enum class Status {
+    ACTIVE, INACTIVE, ABANDONED, DISCHARGED
 }

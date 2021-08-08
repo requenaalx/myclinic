@@ -1,4 +1,4 @@
-package org.myclinic.model.address
+package org.myclinic.model
 
 import org.myclinic.model.exception.PatternMismatch
 

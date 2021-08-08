@@ -1,13 +1,11 @@
-package org.myclinic.model.document
+package org.myclinic.model.patient
 
 import org.myclinic.model.exception.EmptyArgument
 import org.myclinic.model.exception.PatternMismatch
 
-private const val PATTERN: String = "[0-9]{2}/[0-9]{5}"
+private const val PATTERN: String = "[0-9]{9}"
 
-data class Crp(override val number: String) : Document {
-    override val type: DocumentType = DocumentType.CRP
-
+data class Rg(val number: String) {
     init {
         if (number.isEmpty()) throw EmptyArgument(number::class.simpleName!!)
         if (!number.matches(PATTERN.toRegex())) throw PatternMismatch()

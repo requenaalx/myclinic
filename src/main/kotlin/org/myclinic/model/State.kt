@@ -1,4 +1,4 @@
-package org.myclinic.model.address
+package org.myclinic.model
 
 enum class State(val externalName: String, val abbreviation: String) {
     ACRE("Acre", "AC"),

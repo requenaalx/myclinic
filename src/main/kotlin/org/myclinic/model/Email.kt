@@ -1,4 +1,4 @@
-package org.myclinic.model.contact
+package org.myclinic.model
 
 import org.myclinic.model.exception.EmptyArgument
 
