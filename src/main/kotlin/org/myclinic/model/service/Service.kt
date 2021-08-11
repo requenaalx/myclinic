@@ -2,6 +2,7 @@ package org.myclinic.model.service
 
 import org.myclinic.model.patient.Patient
 import org.myclinic.model.provider.Provider
+import org.myclinic.model.service.exception.ActionNotAllowed
 import java.time.LocalDateTime
 
 class Service(
@@ -9,36 +10,25 @@ class Service(
     val patient: Patient,
     var date: LocalDateTime,
     var status: Status = Status.SCHEDULED,
-    var history: List<Request> = emptyList()
 ) {
-    fun cancel(cancelRequest: CancelRequest) {
-        if (status !== Status.SCHEDULED) {
-            throw Exception("Only scheduled services can be rescheduled")
-        }
+    fun cancel() {
+        if (status !== Status.SCHEDULED) throw ActionNotAllowed(status)
 
         status = Status.CANCELLED
-
-        history = history.plus(cancelRequest)
     }
 
-    fun reschedule(rescheduleRequest: RescheduleRequest) {
-        if (status !== Status.SCHEDULED) {
-            throw Exception("Only scheduled services can be rescheduled")
+    fun reschedule(newDate: LocalDateTime) {
+        if (status !== Status.SCHEDULED) throw ActionNotAllowed(status)
+
+        if (newDate.isBefore(LocalDateTime.now())) {
+            throw Exception("The next date must be a future date")
         }
 
-        if (rescheduleRequest.newDate.isBefore(LocalDateTime.now())) {
-            throw Exception("The next date must be greater than the current date")
-        }
-
-        date = rescheduleRequest.newDate
-
-        history = history.plus(rescheduleRequest)
+        date = newDate
     }
 
     fun finish() {
-        if (status !== Status.SCHEDULED) {
-            throw Exception("Only scheduled services can be finished")
-        }
+        if (status !== Status.SCHEDULED) throw ActionNotAllowed(status)
 
         status = Status.FINISHED
     }

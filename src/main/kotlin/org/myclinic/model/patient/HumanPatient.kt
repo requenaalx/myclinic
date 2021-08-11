@@ -22,7 +22,7 @@ class HumanPatient(
     status: Status = Status.ACTIVE,
     guardians: Set<Guardian> = emptySet(),
     history: Set<Note> = emptySet(),
-) {
+) : Patient {
     var name = name
         private set
     var email = email
