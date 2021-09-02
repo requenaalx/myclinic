@@ -7,7 +7,7 @@ private const val PATTERN: String = ""
 
 data class Crmv(override val number: String) : License {
     init {
-        if (number.isEmpty()) throw EmptyArgument(number::class.simpleName!!)
+        if (number.isEmpty()) throw EmptyArgument(number::class)
         if (!number.matches(PATTERN.toRegex())) throw PatternMismatch()
     }
 }

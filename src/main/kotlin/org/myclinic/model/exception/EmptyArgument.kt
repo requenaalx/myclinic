@@ -1,4 +1,6 @@
 package org.myclinic.model.exception
 
-class EmptyArgument(argumentType: String) :
-    Exception("Empty $argumentType provided")
+import kotlin.reflect.KClass
+
+class EmptyArgument(argumentType: KClass<out Any>) :
+    Exception("Empty ${argumentType.simpleName} provided")

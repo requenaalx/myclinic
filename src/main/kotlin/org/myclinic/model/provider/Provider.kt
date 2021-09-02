@@ -1,5 +1,5 @@
 package org.myclinic.model.provider
 
 interface Provider {
-    fun getLicense(): License
+    val license: License
 }

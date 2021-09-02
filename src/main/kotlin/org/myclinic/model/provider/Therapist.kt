@@ -4,10 +4,8 @@ import org.myclinic.model.Email
 import org.myclinic.model.Phone
 
 class Therapist(
-    private val crp: Crp,
+    override val license: Crp,
     val name: String,
     val phone: Phone,
     val email: Email
-) : Provider {
-    override fun getLicense(): License = crp
-}
+) : Provider

@@ -1,6 +1,6 @@
 package org.myclinic.model.patient
 
-enum class Schooling(val externalName: String) {
+enum class Schooling(val translation: String) {
     PRESCHOOL("Pré Escola"),
     INCOMPLETE_ELEMENTARY_SCHOOL("Ensino Fundamental Incompleto"),
     ELEMENTARY_SCHOOL("Ensino Fundamental"),
