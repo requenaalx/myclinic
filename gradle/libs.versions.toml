@@ -1,0 +1,22 @@
+[versions]
+kotlin = "1.9.23"
+quarkus = "3.10.1"
+
+[libraries]
+jdbi = { module = "org.jdbi:jdbi3-kotlin", version.prefer = "3.37.1" }
+mockk = { module = "io.mockk:mockk", version.prefer = "1.13.4" }
+jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.prefer = "2.14.2" }
+archunit = { module = "com.tngtech.archunit:archunit-junit5", version.prefer = "1.0.1" }
+test-mysql = { module = "org.testcontainers:mysql", version.prefer = "1.17.6" }
+quarkus-bom = { module = "io.quarkus:quarkus-bom", version.ref = "quarkus" }
+rest-assured = { module = "io.rest-assured:rest-assured", version.prefer = "5.3.0" }
+flyway-mysql = { module = "org.flywaydb:flyway-mysql", version.prefer = "9.16.1" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.prefer = "1.6.3" }
+kotest = { module = "io.kotest:kotest-assertions-core-jvm", version.prefer = "5.9.0" }
+
+[plugins]
+kover = { id = "org.jetbrains.kotlinx.kover", version.require = "0.8.0" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.require = "11.0.0" }
+quarkus = { id = "io.quarkus", version.ref = "quarkus" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

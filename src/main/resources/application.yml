@@ -1,0 +1,33 @@
+quarkus:
+  log:
+    console:
+      format: '%d{yyyy-MM-dd''T''HH:mm:ss} type=%p traceId=%X{trace_id} spanId=%X{span_id} parentId=%X{parent_id} key=%X{key} data=%X{data} extra=%X{extra} thread="%t" exception="%e" host="%h"%n'
+  test:
+    continuous-testing: disabled
+  http:
+    port: 80
+    host: 0.0.0.0
+    test-port: 0
+  flyway:
+    migrations:
+      schemas: ${FLYWAY_SCHEMA}
+      create-schemas: true
+      migrate-at-start: true
+  datasource:
+    db-kind: mysql
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    jdbc:
+      url: ${JDBC_URL}
+    migrations:
+      db-kind: mysql
+      username: ${FLYWAY_USERNAME}
+      password: ${FLYWAY_PASSWORD}
+      jdbc:
+        url: ${FLYWAY_JDBC_URL}
+  cache:
+    enabled: true
+    caffeine:
+      maximum-size: 200
+      expire-after-write: ${CACHE_TTL}
+      expire-after-access: ${CACHE_TTL}
